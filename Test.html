@@ -1,0 +1,28 @@
+<html>
+    <head>
+    </head>
+    <body>
+        <div>
+            <script>
+                var APIKey = "AIzaSyC7bgXQ4XRndkzKXSQXwdQwiOIHmZvgfiQ";
+                var searchEngineID = "011766833210041731964:07xp0hl30ly";
+                var searchedTerm = "Lobster";
+
+                var request = "GET https://www.googleapis.com/customsearch/v1?filter=1&cx="+searchEngineID+"&q="+searchedTerm+"&imgSize=xlarge&searchType=image&num=200&safe=medium&key={"+APIKey+"}"
+
+                //https://developers.google.com/custom-search/json-api/v1/performance
+
+                function httpGet(theUrl)
+                {
+                    var xmlHttp = new XMLHttpRequest();
+                    xmlHttp.open( "GET", theUrl, false );
+                    xmlHttp.send( null );
+                    return xmlHttp.responseText;
+                }
+
+                var temp = httpGet(request);
+                console.log(temp);
+            </script>
+        </div>
+    </body>
+</html>
