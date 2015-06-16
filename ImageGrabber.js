@@ -30,7 +30,7 @@ var getJSON = function(url, successHandler, errorHandler) {
 window.onload = function(){ // STARTS HERE
 	var searchBar = document.querySelector("#searchBar");
 	var searchButton = document.querySelector("#searchButton");
-	var body = document.querySelector("#body");
+	var carousel = document.querySelector("#carousel");
 	var totalResults;
 	var newImages = [];
 
@@ -61,13 +61,25 @@ window.onload = function(){ // STARTS HERE
 	};
 
 	doneRetreiving = function(){
-		for(var i = 0; i < 20; i++){
+		for(var i = 0; i < 20; i++){ // create images
 			newImages.push(document.createElement('img'));
-			newImages[i].src=totalResults[i].link;
+			newImages[i].src = totalResults[i].link;
 		}
-		// process images
-		for(var i = 0; i < 20; i++){
-			body.appendChild(newImages[i]);
+		// add images to page
+		for(var k = 0; k < 20; k++){
+			carousel.appendChild(newImages[k]);
+			newImages[k].className = "imageResult";
 		}
+
+		$('#carousel').slick({ // initialize slick
+			accessibility: false,
+			autoplay: true,
+			autoplaySpeed: 2500,
+			arrows: false,
+			centerPadding: "0px",
+			draggable: false,
+			pauseOnHover: false,
+			touchMove: false
+		});
 	};
 };
